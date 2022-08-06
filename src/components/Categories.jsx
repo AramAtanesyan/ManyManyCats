@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {useSelector, useDispatch} from "react-redux"
-import { fetchCategoriesAsync } from "../store/actions/categoryActions";
+
+import { fetchCategoriesAsync } from "../store/asyncActions/categoryActions";
+import {changeSelectedCategory } from "../store/actionCreators/categoryActionCreators"
 
 import "./styles.css";
 
 
 const Categories = (props) => {
-    const {isLoading, categories, error} = useSelector(state => state.category);
+    const {isLoading, categories, error, selectedCategory} = useSelector(state => state.category);
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -16,9 +18,11 @@ const Categories = (props) => {
         
     }, [])
 
+    
+
     const handleCategoryClick = categoryId => {
-        
-    }
+        dispatch(changeSelectedCategory(categoryId))
+    }   
 
 
     return (
@@ -30,7 +34,7 @@ const Categories = (props) => {
 
             {!isLoading && !error &&
                 <ul>
-                    {categories.map(category => <li onClick={() => handleCategoryClick(category.id)} key={category.id}>{category.name}</li>)}
+                    {categories.map(category => <li className="categoryItem" onClick={() => handleCategoryClick(category.id)} key={category.id}>{category.id} === {category.name}</li>)}
                 </ul>}
         </div>
     )

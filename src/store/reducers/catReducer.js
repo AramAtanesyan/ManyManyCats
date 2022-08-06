@@ -1,5 +1,5 @@
 const initialState = {
-    isLoading: false,
+    isLoading: true,
     cats: [],
     error: ''
 };
@@ -27,7 +27,7 @@ export const catReducer = (state = initialState, action) => {
                     isLoading: false,
                     error: action.payload
             };
-            
+
         default:
             return state;
     }
