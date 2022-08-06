@@ -13,7 +13,6 @@ export const categoryReducer = (state = initialState, action) => {
         case FETCH_CATEGORIES:
             return {
                 ...state,
-                categories: [],
                 isLoading: true,
                 error: ''
             };

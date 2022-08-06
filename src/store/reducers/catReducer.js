@@ -9,14 +9,13 @@ export const catReducer = (state = initialState, action) => {
         case 'FETCH_CATS':
             return {
                 ...state,
-                cats: [],
                 isLoading: true,
                 error: ''
             };
             case 'FETCH_CATS_SUCCESS':
                 return {
                     ...state,
-                    cats: action.payload,
+                    cats: [...state.cats, ...action.payload],
                     isLoading: false,
                     error: ''
             };    
