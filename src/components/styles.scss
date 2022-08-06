@@ -1,13 +1,3 @@
-// #CDE9D6, #D2E4FD, #FFF1CB, #F8D3CF
-
-/*
-  #224
-  #c77
-  #acb
-  #eee
-  #5bb
-*/
-
 .categories-container {
   background-color: #224;
   color: #eee;
@@ -56,7 +46,6 @@
 
     .cat-image {
       width: 30vw;
-      // height: 30vw;
     }
   }
 
@@ -83,7 +72,6 @@
   }
 }
 
-// LOADER START
 .lds-dual-ring {
   display: inline-block;
   width: 80px;
@@ -108,4 +96,3 @@
     transform: rotate(360deg);
   }
 }
-// LOADER END

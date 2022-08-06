@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { fetchCategoriesAsync } from '../store/asyncActions/categoryActions';
 import { changeSelectedCategory } from '../store/actionCreators/categoryActionCreators';
 
 import { Container, Error, Loader } from './Elements';
+
 
 const Categories = props => {
   const { isLoading, categories, error, selectedCategory } = useSelector(state => state.category);
@@ -18,8 +18,8 @@ const Categories = props => {
 
   const handleCategoryClick = categoryId => {
     dispatch(changeSelectedCategory(categoryId));
-    console.log('selectedCategory: ', selectedCategory);
   };
+
   const renderCategories = categories => {
     return (
       <div>

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchCategoriesAsync } from '../store/asyncActions/categoryActions';
 import { changeSelectedCategory } from '../store/actionCreators/categoryActionCreators';
-
 import { fetchCatsAsync } from '../store/asyncActions/catActions';
 
 import { Error, Loader, Container, Image } from './Elements';
@@ -18,6 +17,7 @@ const renderCats = cats => {
   );
 };
 
+
 const Cats = props => {
   const { isLoading, cats, error } = useSelector(state => state.cat);
   const { selectedCategory } = useSelector(state => state.category);
@@ -26,13 +26,27 @@ const Cats = props => {
 
   useEffect(() => {
     if (selectedCategory) {
-      dispatch(fetchCatsAsync({ page: currentPage, categoryId: selectedCategory }));
+        loadCats(selectedCategory, 1, true)
     }
-  }, [selectedCategory, currentPage]);
+    setCurrentPage(1)
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    if (selectedCategory && currentPage > 1) {
+        loadCats(selectedCategory, currentPage)
+      }
+  }, [currentPage])
 
   const loadMore = () => {
     setCurrentPage(currentPage + 1);
   };
+
+  const loadCats = (categoryId, page, isNewCategory=false) => {
+    if(page, categoryId) {
+        dispatch(fetchCatsAsync({ page, categoryId, isNewCategory }));
+    }
+  }
+
 
   if (!selectedCategory) {
     return <Container className="cats-container" />;

@@ -15,7 +15,7 @@ export const catReducer = (state = initialState, action) => {
             case 'FETCH_CATS_SUCCESS':
                 return {
                     ...state,
-                    cats: [...state.cats, ...action.payload],
+                    cats: action.payload.isNewCategory ? action.payload.cats : [...state.cats, ...action.payload.cats],
                     isLoading: false,
                     error: ''
             };    

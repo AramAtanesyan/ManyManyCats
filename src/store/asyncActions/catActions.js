@@ -5,15 +5,14 @@ export const fetchCatsAsync = (options) => {
     return dispatch => {
         
         dispatch(fetchCats());
-        const {page, categoryId} = options;
-           
+        const {page, categoryId, isNewCategory} = options;
             setTimeout(async () => {
 
                 try {
                     const response = await axiosInstance.get(`/images/search?limit=10&page=${page}&category_ids=${categoryId}`);
                     const cats = response.data;
                     
-                    dispatch(fetchCatsSuccess(cats));
+                    dispatch(fetchCatsSuccess(cats, isNewCategory));
                 }catch(e){
                     dispatch(fechCatsFailure(e.message));    
                 }
