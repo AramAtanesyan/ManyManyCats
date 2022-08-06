@@ -31,11 +31,14 @@ const Cats = (props) => {
 
 
     if(!selectedCategory) {
-        return <Container />;
+        return <Container className="cats-container"/>;
+
     } else if(selectedCategory && isLoading) {
         return <Container><Loader /></Container>
+
     } else if(error) {
         return <Container><Error error={error} /></Container>
+        
     } else if(cats) {
         return <Container>{renderCats(cats)}</Container>
     }

@@ -25,6 +25,10 @@ const Categories = (props) => {
     }   
 
 
+    if(isLoading) {
+        return <Container />
+    }
+
     return (
         <div className="categories">
             <h1>Categories</h1>
